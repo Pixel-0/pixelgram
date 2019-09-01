@@ -26,3 +26,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Image(models.Model):
+    image = models.ImageField(upload_to='images/')
+    image_caption = HTMLField()
+    profile = models.ForeignKey(Profile, related_name="user_profile")
+    posted = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
