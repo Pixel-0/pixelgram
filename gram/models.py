@@ -10,3 +10,19 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+    @classmethod
+    def display_profile(cls):
+        profiles=cls.objects.get(pk=1)
+        return profiles
+
+    def delete_profile(self):
+        return self.delete()
+
+    @classmethod
+    def find_username(cls, search_term):
+        profiles=cls.objects.filter(user__username__icontains=search_term)
+        return profiles 
+
+    def __str__(self):
+        return self.user.username
