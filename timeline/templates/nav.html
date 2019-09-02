@@ -1,12 +1,15 @@
 {% load static %}
 {% load bootstrap4 %} 
 
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
 <div class="nav-bg">
-   <nav>
+   <nav style="display:flex; flex-direction: right; justify-content: space-around;">
       <div class="logo">
          <div class="logo-icon">
             <a href="{% url 'home' %}">
-               <img src="{% static 'images/insta_icon.svg' %}" alt="">
+                  <i class="fab fa-instagram"></i>
             </a>
             </div>
       </div>
@@ -20,9 +23,10 @@
       <div class="user-menu">
          <div class="profile-icon">
             <a href="{% url 'profile' %}">
-               <img src="{% static 'images/account.svg' %}" alt="">
+                  <i class="fas fa-user"></i>
             </a>
          </div>
       </div>
    </nav>
 </div>
+<hr>

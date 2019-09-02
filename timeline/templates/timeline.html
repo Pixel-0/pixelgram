@@ -5,24 +5,25 @@
 {% block content %}
 
    {% include "nav.html" %}
-
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    
    <div class="row">
+      <div class="col-md-2"></div>
       <div class="col-md-6">
 
          {% for post in images %}
-         <div class="card border-success mb-4" style="max-width: 35rem;">
+         <div class="card border-dark mb-4" style="max-width: 35rem;">
                <div class="post-top">
-                     <img src="{{ post.author.avatar.url }}" alt="">
+                     <img style="width: 50px; border-radius: 50%;" src="{{ post.author.avatar.url }}" alt="">
                   <a href="{% url 'user_profile' post.author.user.username %}"><p>{{ post.author.user.username }}</p></a>
                </div>
-               <div class="card-body text-success">
+               <div class="card-body text-dark">
                   <a href="{% url 'image_view' post.id %}">
                      <img width="400px" src="{{ post.img.url }}" alt="">
                   </a>
                   
                </div>
-               <div class="card-footer bg-transparent border-success">   
+               <div class="card-footer bg-transparent border-dark">   
                   <a href="{% url 'like' post.id %}">
                      <img src="{% static 'images/like.svg' %}" alt="">
                   </a>
@@ -60,7 +61,7 @@
          <a href="{% url 'profile' %}">
             <div class="current-user">
                   <div class="avatar-md">
-                     <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
+                     <img style="width: 50px; border-radius: 50%;" src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
                   </div>
                   <div class='name'>
                      <h4>{{ user.username }}</h4>
