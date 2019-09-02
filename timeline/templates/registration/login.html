@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% load static %}
-
+{% load bootstrap4 %} 
 {% block content %}
 
    <div class="page">
@@ -13,7 +13,7 @@
             </div>
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn">Log In</button>
+            <button type="submit" class="btn btn-dark">Log In</button>
          </form>
          
       </div>

@@ -205,7 +205,7 @@ def like(request,image_id):
 
    image = Image.objects.filter(pk=image_id).first()
    like = image.like_set.filter(liked_by=user.profile).first()
-   
+   # like = Like.objects.get(liked=image,liked_by=user.profile)
 
    if like:
       like.delete()

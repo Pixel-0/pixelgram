@@ -1,34 +1,32 @@
 {% extends "layout.html" %}
 {% load static %}
+{% load bootstrap4 %} 
 
 {% block content %}
 
    {% include "nav.html" %}
 
-   <div class="page"></div>
-
-   <div class="tl-container">
-      <div class="posts-container">
+   
+   <div class="row">
+      <div class="col-md-6">
 
          {% for post in images %}
-            <div class="post-card">
+         <div class="card border-success mb-4" style="max-width: 35rem;">
                <div class="post-top">
-                  <div class="avatar-sm">
                      <img src="{{ post.author.avatar.url }}" alt="">
-                  </div>
                   <a href="{% url 'user_profile' post.author.user.username %}"><p>{{ post.author.user.username }}</p></a>
                </div>
-               <div class="post-image">
+               <div class="card-body text-success">
                   <a href="{% url 'image_view' post.id %}">
-                     <img src="{{ post.img.url }}" alt="">
+                     <img width="400px" src="{{ post.img.url }}" alt="">
                   </a>
                   
                </div>
-               <div class="post-icons">   
+               <div class="card-footer bg-transparent border-success">   
                   <a href="{% url 'like' post.id %}">
                      <img src="{% static 'images/like.svg' %}" alt="">
                   </a>
-               </div>
+               
                <div class="post-likes">
                   <p>{{ post.like_set.count }} Likes</p>
                </div>
@@ -53,9 +51,11 @@
                   </form>
                </div>
             </div>
+            </div>
          {% endfor %}
 
       </div>
+<div class="row-md-4">
       <div class="sidebar">
          <a href="{% url 'profile' %}">
             <div class="current-user">
@@ -74,8 +74,9 @@
             </a>
          </div>
       </div>
-
    </div>
+  
+
 
    <div class="modal">
       <div class="new-post">
@@ -88,4 +89,5 @@
          </div>
       </div>
    </div>
+</div>
 {% endblock content %}
