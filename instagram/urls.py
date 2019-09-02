@@ -1,12 +1,12 @@
+
 from django.contrib import admin
-from django.conf.urls import url,include
+from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-from gram import urls
 
 urlpatterns = [
-    url('', include('gram.urls')),
-    url('admin/', admin.site.urls),
+    path('', include('timeline.urls')),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
