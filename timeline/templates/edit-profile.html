@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+
+   {% include "nav.html" %}
+
+   <div class="page">
+      
+      <div class="update-form">
+
+         <form action="" method="post" enctype="multipart/form-data">
+            <div class="legend">
+               <h5>Edit Profile</h5>
+            </div>
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Submit</button>
+         </form>
+      </div>
+      
+   </div>
+
+{% endblock content %}

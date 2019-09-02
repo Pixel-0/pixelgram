@@ -33,7 +33,7 @@ def index(request):
       'user': user,
       'comments': comments
    }
-   return render(request, 'timeline/timeline.html', context)
+   return render(request, 'timeline.html', context)
 
 @login_required
 def users(request,user_name):
@@ -45,7 +45,7 @@ def users(request,user_name):
       'images': images
    }
 
-   return render(request, 'timeline/user.html', context)
+   return render(request, 'user.html', context)
 
 @login_required
 def new_post(request):
@@ -65,7 +65,7 @@ def new_post(request):
       'form': form
    }
 
-   return render(request, 'timeline/new-post.html', context)
+   return render(request, 'new-post.html', context)
 
 def register(request):
 
@@ -86,7 +86,7 @@ def register(request):
       'form': form
    }
 
-   return render(request, 'timeline/register.html', context)
+   return render(request, 'register.html', context)
 
 
 @login_required
@@ -100,7 +100,7 @@ def profile(request):
       'images': images
    }
 
-   return render(request, 'timeline/profile.html', context)
+   return render(request, 'profile.html', context)
 
 @login_required
 def edit_profile(request):
@@ -127,7 +127,7 @@ def edit_profile(request):
       'form': form
    }
 
-   return render(request, 'timeline/edit-profile.html', context)
+   return render(request, 'edit-profile.html', context)
 
 @login_required
 def search(request):
@@ -142,7 +142,7 @@ def search(request):
       'user': user
    }
 
-   return render(request, 'timeline/search.html', context)
+   return render(request, 'search.html', context)
 
 
 def login_view(request):
@@ -196,7 +196,7 @@ def image_view(request,image_id):
       'form': form
    }
 
-   return render(request,'timeline/image_view.html',context)
+   return render(request,'image_view.html',context)
 
 
 def like(request,image_id):

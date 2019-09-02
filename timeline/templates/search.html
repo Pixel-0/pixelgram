@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+  
+   {% include "nav.html" %}
+
+   <div class="page"></div>
+   <div class="container">
+      {% if user %}
+        <h5 class="search-result">Your search for <span>{{ searched }}</span> returned:</h5>
+         <a href="{% url 'user_profile' user.username %}">
+            <div class='user-card'>
+               <div class="avatar-md">
+                  <img src="{{ user.profile.avatar.url }}" alt="">
+               </div>
+               <div class='user-details'>
+                  <p>{{ user.username }}</p>
+               </div>
+            </div>
+         </a>
+      {% else %}
+        <h5 class='not-found'>There's no user going by that username</h5>
+      {% endif %}
+      
+   </div>
+
+{% endblock content %}
