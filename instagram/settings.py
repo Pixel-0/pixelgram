@@ -32,6 +32,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
     'timeline.apps.TimelineConfig',
     'django.contrib.admin',
     'django.contrib.auth',
