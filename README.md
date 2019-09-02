@@ -1,10 +1,9 @@
-# Instagram Clone
+# Pixelgram
 
-###### Authored by Michael Kipchumba
+###### Authored by Sara Munini
 
 A web app that tries to emulate instagram's features.
 
-[Live Site](https://shashin-o-mimasu.herokuapp.com/login/)
 
 ### Project Approach
    
@@ -27,17 +26,11 @@ A web app that tries to emulate instagram's features.
 
 - Django
 
-###### Additional Tools
-
-- Fonts from [Google Fonts](fonts.google.com)
-
 ### Setting Up
 
 If you feel like using this project as your own you can do so, following the instructions below:
 
-   - Go to your chosen directory.
-   - `git clone https://github.com/mikechumba/insta/`
-   - `cd <your-dir>/insta`
+  
 
 This project requires that you have python 3.6+ set up. You can follow the instructions [here](realpython.com/installing-python/) to achieve that, if you haven't.
 
@@ -47,8 +40,6 @@ You will also need to install Django. Follow the instructions [here](https://www
 
 This app doesn't seem to have any bugs for now. If you happen to come across one, I will be happy to take a look at it. Contact Me on:
 
-- [Facebook](https://web.facebook.com/ItsMikeChumba/)
-- [Email](michaelchumba09@gmail.com)
 
 ### License 
 
