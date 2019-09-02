@@ -1,0 +1,91 @@
+{% extends "timeline/layout.html" %}
+{% load static %}
+
+{% block content %}
+
+   {% include "timeline/nav.html" %}
+
+   <div class="page"></div>
+
+   <div class="tl-container">
+      <div class="posts-container">
+
+         {% for post in images %}
+            <div class="post-card">
+               <div class="post-top">
+                  <div class="avatar-sm">
+                     <img src="{{ post.author.avatar.url }}" alt="">
+                  </div>
+                  <a href="{% url 'user_profile' post.author.user.username %}"><p>{{ post.author.user.username }}</p></a>
+               </div>
+               <div class="post-image">
+                  <a href="{% url 'image_view' post.id %}">
+                     <img src="{{ post.img.url }}" alt="">
+                  </a>
+                  
+               </div>
+               <div class="post-icons">   
+                  <a href="{% url 'like' post.id %}">
+                     <img src="{% static 'images/like.svg' %}" alt="">
+                  </a>
+               </div>
+               <div class="post-likes">
+                  <p>{{ post.like_set.count }} Likes</p>
+               </div>
+               <div class="post-caption">
+                  <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>
+               </div>
+               <div class="post-comments">
+                  
+                  {% for comment in comments  %}
+                     {% if comment.commented_on == post %}
+                        <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
+                     {% endif %}
+                  {% endfor %}                    
+                  
+               </div>
+               <div class="post-comment-field">
+                  <form action="" method="POST">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                     <input type="text" name="image_id" id="image_id" value="{{ post.id }}" hidden>
+                     <button type="submit" hidden></button>
+                  </form>
+               </div>
+            </div>
+         {% endfor %}
+
+      </div>
+      <div class="sidebar">
+         <a href="{% url 'profile' %}">
+            <div class="current-user">
+                  <div class="avatar-md">
+                     <img src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
+                  </div>
+                  <div class='name'>
+                     <h4>{{ user.username }}</h4>
+                     <p>{{ user.first_name }} {{ user.last_name }}</p>
+                  </div>
+            </div>
+         </a>
+         <div class="post-btn">
+            <a href="{% url 'new_post' %}">
+               <button id="newpost"> + Add Post</button>
+            </a>
+         </div>
+      </div>
+
+   </div>
+
+   <div class="modal">
+      <div class="new-post">
+         <div class="form-container">
+            <form action="" method="post" enctype="multipart/form-data">
+               <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" >
+               {{ new_post.as_p }}
+               <button type="submit">Post</button>
+            </form>
+         </div>
+      </div>
+   </div>
+{% endblock content %}

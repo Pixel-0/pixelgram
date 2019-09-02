@@ -1,0 +1,31 @@
+{% load static %}
+<div class="nav-bg">
+   <nav>
+      <div class="logo">
+         <div class="logo-icon">
+            <a href="{% url 'home' %}">
+               <img src="{% static 'images/insta_icon.svg' %}" alt="">
+            </a>
+            </div>
+         <div class="glyph">
+            <a href="{% url 'home' %}">
+               <img src="{% static 'images/insta_text.svg' %}" alt="">
+            </a>
+         </div>
+      </div>
+
+      <div class="search">
+         <form action="{% url 'search' %}" method="get">
+            <input type="text" name="insta_search" id="insta-search" placeholder="&#xf002; Search">
+            <button type="submit" hidden></button>
+         </form>
+      </div>
+      <div class="user-menu">
+         <div class="profile-icon">
+            <a href="{% url 'profile' %}">
+               <img src="{% static 'images/account.svg' %}" alt="">
+            </a>
+         </div>
+      </div>
+   </nav>
+</div>
