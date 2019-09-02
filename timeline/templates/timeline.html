@@ -34,13 +34,13 @@
                   <p>{{ post.like_set.count }} Likes</p>
                </div>
                <div class="post-caption">
-                  <p><span>{{ post.author.user.username }}</span>{{ post.caption }}</p>
+                  <p><span style="font-weight: bold;">{{ post.author.user.username }} </span>{{ post.caption }}</p>
                </div>
                <div class="post-comments">
                   
                   {% for comment in comments  %}
                      {% if comment.commented_on == post %}
-                        <p><span>{{ comment.comment_author.user.username }}</span> {{ comment.comment }}</p>
+                        <p><span style="font-weight: bold;">{{ comment.comment_author.user.username }} </span> {{ comment.comment }}</p>
                      {% endif %}
                   {% endfor %}                    
                   
