@@ -11,12 +11,12 @@
    
    <div class="image-view">
       <div class="post-image">
-         <img src="{{ image.img.url }}" alt="">
+         <img width="400px" src="{{ image.img.url }}" alt="">
       </div>
       <div class="image-details">
          <div class="image-author">
             <div class="avatar-sm">
-               <img src="{{ image.author.avatar.url }}" alt="">
+               <img style="width: 50px; border-radius: 50%;" src="{{ image.author.avatar.url }}" alt="">
             </div>
             <p>{{ image.author.user.username }}</p>
             
@@ -33,7 +33,7 @@
          </div>
          <div class="post-icons">   
             <a href="{% url 'like' image.id %}">
-               <img src="{% static 'images/like.svg' %}" alt="">
+                  <i class="fa fa-heart"></i>
             </a>
          </div>
          <div class="post-likes">
