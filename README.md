@@ -1,6 +1,6 @@
 # Pixelgram
 
-###### Authored by Sara Munini
+### By Sara Munini
 
 A web app that tries to emulate instagram's features.
 
@@ -14,12 +14,11 @@ A web app that tries to emulate instagram's features.
 | User wants to search for user | They enter the user's username | An account with the username is returned if found |
 | User wants to like and commment on a picture | They enter their comment or click on the like button | Their comment or like is added to the post |
 
-### Project Tools
 
 ##### Languages
 
 - Python
-- Css/Scss
+- CSS
 - HTML
 
 ##### Frameworks
@@ -31,7 +30,6 @@ A web app that tries to emulate instagram's features.
 If you feel like using this project as your own you can do so, following the instructions below:
 
   
-
 This project requires that you have python 3.6+ set up. You can follow the instructions [here](realpython.com/installing-python/) to achieve that, if you haven't.
 
 You will also need to install Django. Follow the instructions [here](https://www.djangoproject.com/start/).
