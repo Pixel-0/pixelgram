@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% load static %}
+
 {% load bootstrap4 %} 
 
 
@@ -7,7 +7,7 @@
 
    {% include "nav.html" %}
 
-   <div class="page"></div>
+  
       <div class="container">
 
          <div class="profile-content">
@@ -20,15 +20,15 @@
                   <div class="profile-user">
                      <h1>{{ user.username }}</h1>
                   </div>
-                  <div class="edit-btn">
+                  <div >
                      <a href="{% url 'edit_profile' %}">Edit Profile</a>
-                     <button id="settings"><i class="fas fa-cog"></i></button> 
+                      
                   </div>
                   
                </div>
 
 
-               <div class="activity-count">
+               <div >
                   <p><span>{{ user.profile.image_set.count }}</span> posts </p>
                   <p><span>{{ user.profile.followed_by.count }}</span> followers </p>
                   <p><span>{{ user.profile.following.count }}</span> following </p>
