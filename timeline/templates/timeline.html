@@ -1,91 +1,97 @@
 {% extends "layout.html" %}
 {% load static %}
-{% load bootstrap4 %} 
+{% load bootstrap4 %}
 
 {% block content %}
 
-   {% include "nav.html" %}
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+{% include "nav.html" %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+   integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-   
-   <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-6">
 
-         {% for post in images %}
-         <div class="card border-dark mb-4" style="max-width: 35rem;">
-               <div class="post-top">
-                     <img style="width: 50px; border-radius: 50%;" src="{{ post.author.avatar.url }}" alt="">
-                  <a href="{% url 'user_profile' post.author.user.username %}"><p>{{ post.author.user.username }}</p></a>
-               </div>
-               <div class="card-body text-dark">
-                  <a href="{% url 'image_view' post.id %}">
-                     <img width="400px" src="{{ post.img.url }}" alt="">
-                  </a>
-                  
-               </div>
-               <div class="card-footer bg-transparent border-dark">   
-                  <a href="{% url 'like' post.id %}">
-                        <i class="fa fa-heart"></i>
-                  </a>
-               
-               <div class="post-likes">
-                  <p>{{ post.like_set.count }} Likes</p>
-               </div>
-               <div class="post-caption">
-                  <p><span style="font-weight: bold;">{{ post.author.user.username }} </span>{{ post.caption }}</p>
-               </div>
-               <div class="post-comments">
-                  
-                  {% for comment in comments  %}
-                     {% if comment.commented_on == post %}
-                        <p><span style="font-weight: bold;">{{ comment.comment_author.user.username }} </span> {{ comment.comment }}</p>
-                     {% endif %}
-                  {% endfor %}                    
-                  
-               </div>
-               <div class="post-comment-field">
-                  <form action="" method="POST">
-                     {% csrf_token %}
-                     {{ form.as_p }}
-                     <input type="text" name="image_id" id="image_id" value="{{ post.id }}" hidden>
-                     <button type="submit" hidden></button>
-                  </form>
-               </div>
+<div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-6">
+
+      {% for post in images %}
+      <div class="card border-dark mb-4" style="max-width: 35rem;">
+         <div class="post-top">
+            <img style="width: 50px; border-radius: 50%;" src="{{ post.author.avatar.url }}" alt="">
+            <a href="{% url 'user_profile' post.author.user.username %}">
+               <p>{{ post.author.user.username }}</p>
+            </a>
+         </div>
+         <div class="card-body text-dark">
+            <a href="{% url 'image_view' post.id %}">
+               <img width="400px" src="{{ post.img.url }}" alt="">
+            </a>
+
+         </div>
+         <div class="card-footer bg-transparent border-dark">
+            <a href="{% url 'like' post.id %}">
+               <i class="fa fa-heart"></i>
+            </a>
+
+            <div class="post-likes">
+               <p>{{ post.like_set.count }} Likes</p>
             </div>
+            <div class="post-caption">
+               <p><span style="font-weight: bold;">{{ post.author.user.username }} </span>{{ post.caption }}</p>
             </div>
-         {% endfor %}
+            <div class="post-comments">
 
+               {% for comment in comments  %}
+               {% if comment.commented_on == post %}
+               <p><span style="font-weight: bold;">{{ comment.comment_author.user.username }} </span>
+                  {{ comment.comment }}</p>
+               {% endif %}
+               {% endfor %}
+
+            </div>
+            <div class="post-comment-field">
+               <form action="" method="POST">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <input type="text" name="image_id" id="image_id" value="{{ post.id }}" hidden>
+                  <button type="submit" hidden></button>
+               </form>
+            </div>
+         </div>
       </div>
-<div class="row-md-4">
+      {% endfor %}
+
+   </div>
+   <div class="row-md-4">
       <div class="sidebar">
          <a href="{% url 'profile' %}">
             <div class="current-user">
-                  <div class="avatar-md">
-                     <img style="width: 50px; border-radius: 50%;" src="{{ user.profile.avatar.url }}" alt="{{ user.first_name }}Avatar">
-                  </div>
-                  <div class='name'>
-                     <h4>{{ user.username }}</h4>
-                     <p>{{ user.first_name }} {{ user.last_name }}</p>
-                  </div>
+               <div class="avatar-md">
+                  <img style="width: 50px; border-radius: 50%;" src="{{ user.profile.avatar.url }}"
+                     alt="{{ user.first_name }}Avatar">
+               </div>
+               <div class='name'>
+                  <h4>{{ user.username }}</h4>
+                  <p>{{ user.first_name }} {{ user.last_name }}</p>
+               </div>
             </div>
          </a>
          <div class="post-btn">
             <a href="{% url 'new_post' %}">
-               <button id="newpost"> + Add Gram</button>
+               <button class="btn btn-dark" id="newpost"> + Add Gram</button>
             </a>
          </div>
       </div>
    </div>
-  
+
 
 
    <div class="modal">
       <div class="new-post">
          <div class="form-container">
             <form action="" method="post" enctype="multipart/form-data">
-               <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" >
+               <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                {{ new_post.as_p }}
                <button type="submit">Post</button>
             </form>
