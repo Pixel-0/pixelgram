@@ -5,15 +5,15 @@ from django.contrib.auth.models import User
 
 # Functions to create instances from models
 def create_user_instance():
-   user = User(username='mikechumba',email='mike@test.com',password='password')
+   user = User(username='pixel',email='pixel@test.com',password='password')
    return user
 
 def create_profile_instance():
-   profile = Profile(avatar='default.jpg',bio='Someone someone')
+   profile = Profile(avatar='default.jpg',bio='diehumandie')
    return profile
 
 def create_image_instance(profile_instance):
-   image = Image(img='avatar.jpg',caption='some kind of avatar',author_id=profile_instance)
+   image = Image(img='avatar.jpg',caption='avataaaaaaaaaar',author_id=profile_instance)
    return image
 
 def create_comments_instance(profile_instance,image_instance):
@@ -77,29 +77,3 @@ class ImageTest(TestCase):
       self.new_image.delete_image()
       images = Image.objects.all()
       self.assertTrue(len(images)<1)
-
-class LikesTest(TestCase):
-
-   def setUp(self):
-      user = create_user_instance()
-      user.save()
-      image = create_image_instance(user.profile.id)
-      image.save()
-      self.new_like = create_like_instance(user.profile,image)
-
-   def test_like_instance(self):
-      self.assertTrue(isinstance(self.new_like,Like))
-
-   def test_save_likes(self):
-      self.new_like.save()
-      likes = Like.objects.all()
-      self.assertTrue(len(likes),1)
-
-   def test_delete_likes(self):
-      self.new_like.save()
-      self.new_like.delete_like()
-      likes = Like.objects.all()
-      self.assertTrue(len(likes)<1)
-
-
-
